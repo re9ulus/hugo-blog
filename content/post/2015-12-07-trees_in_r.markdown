@@ -13,7 +13,7 @@ katex: true
 
 Рассмотрим пример простого дерева используя данные о пассажирах Титаника.
 
-{{<image src="/img/trees/tree_example.png" alt="Tree example" position="center">}}
+![Tree example](/img/trees/tree_example.png)
 
 В корне дерева проверяется пол пассажира. Пассажиры мужского пола при этом определяются как погибшие (левое поддерево).
 
@@ -38,7 +38,6 @@ katex: true
 
 ```R
 # Подготовка данных
-
 setwd("path/to/working/directory")
 titanic <- read.csv("titanic.csv")
 
@@ -54,7 +53,6 @@ Train <- subset(titanic, split == TRUE)
 Test <- subset(titanic, split == FALSE)
 
 # Установка и загрузка пакетов
-
 install.packages("rpart")
 install.packages("rpart.plot")
 install.packages("rattle")
@@ -65,28 +63,24 @@ library(rattle)
 library(RColorBrewer)
 
 # Строим модель
-
-TitanicTree <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
-                    data = Train, method = "class",
-                    control=rpart.control(minbucket = 25))
+TitanicTree <- rpart(
+    Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
+    data = Train, method = "class",
+    control=rpart.control(minbucket = 25)
+)
 
 # Изображение дерева
-
 prp(TitanicTree) # Простое графическое изображение
-
 fancyRpartPlot(TitanicTree) # Более наглядная версия, используемая в статье
 
 # Получаем предсказания
-
 PredictCART <- predict(TitanicTree, newdata = Test, type="class")
 
 # Определяем точность
-
 table(Test$Survived, PredictCART)
 (156 + 54) / (156 + 54 + 49 + 9) # 0.7835821
 
 # ROC кривая
-
 library(ROCR)
 PredictROC <- predict(TitanicTree, newdata = Test)
 pref <- prediction(PredictROC[,2], Test$Survived)
@@ -96,7 +90,7 @@ plot(perf)
 
 Полученная модель:
 
-{{<image src="/img/trees/tree_in_r.png" alt="Tree example" position="center">}}
+![Tree example](/img/trees/tree_in_r.png)
 
 Точность модели $\approx78\%$.
 
@@ -112,31 +106,29 @@ plot(perf)
 
 ```R
 # Устанавливаем необходимые пакеты
-
 install.packages("caret")
 install.packages("e1071")
 library(caret)
 library(e1071)
 
 # method="cv" - использовть кросс-валидацию
-
 # number=30 - использовать 30 частей(folds)
-
 fitControl <- trainControl(method="cv", number=30)
 
 # Использовть значения cp от 0.001 до 0.2
-
 cartGrid <- expand.grid(.cp=(1:200)*0.001)
 
 # !ВАЖНО: Зависимая переменная должна иметь тип factor
-
 # Кросс-валидация
-
-train(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare, data=Train, method="rpart",
-      trControl=fitControl, tuneGrid=cartGrid)
+train(
+    Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
+    data=Train,
+    method="rpart",
+    trControl=fitControl,
+    tuneGrid=cartGrid
+)
 
 # Результатом будет таблица, содержащая различные значения точности(Accuracy) для различных cp
-
 # Нам нужен cp, который дает максимальную точность, он указан в конце вывода функции
 
   cp    Accuracy   Kappa       Accuracy SD  Kappa SD  
@@ -149,17 +141,16 @@ train(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare, data=Train, method="
 Accuracy was used to select the optimal model using  the largest value.
 The final value used for the model was cp = 0.006 # Нужное значение
 
-
 # Полученный cp необходимо использовать в функции rpart в качестве параметра
-
 # control=rpart.control(cp=)  
-
-TitanicTree <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
-                    data = Train, method = "class",
-                    control=rpart.control(cp = 0.006))
+TitanicTree <- rpart(
+    Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
+    data=Train,
+    method="class",
+    control=rpart.control(cp = 0.006)
+)
 
 # Рассмотрим получившееся дерево
-
 fancyRpartPlot(TitanicTree)
 PredictCART <- predict(TitanicTree, newdata = Test, type="class")
 table(Test$Survived, PredictCART)
@@ -168,7 +159,7 @@ table(Test$Survived, PredictCART)
 
 Дерево полученное в результате использования параметра `cp` после кросс-валидации:
 
-{{<image src="/img/trees/cross_validation_tree.png" alt="Tree example" position="center">}}
+![Tree example](/img/trees/cross_validation_tree.png)
 
 Точность новой модели $\approx79.5\%$.
 
@@ -185,23 +176,23 @@ table(Test$Survived, PredictCART)
 
 ```R
 # Устанавливаем необходимый пакет
-
 install.packages("randomForest")
 library(randomForest)
 
 # !ВАЖНО: Зависимая переменная должна иметь тип factor
 
 # Построение случайного леса
-
-TrainForest <- randomForest(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
-                             data=Train, nodesize=25, ntree=200)
+TrainForest <- randomForest(
+    Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare,
+    data=Train,
+    nodesize=25,
+    ntree=200
+)
 
 # Получаем предсказания
-
 PredictForest <- predict(TrainForest, newdata = Test)
 
 # Точность модели
-
 table(Test$Survived, PredictForest)
 (151 + 65) / (151 + 65 + 38 + 14) # 0.8059701
 ```

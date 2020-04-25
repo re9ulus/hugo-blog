@@ -24,7 +24,7 @@ Advances in neural information processing systems. 2012. [[pdf](http://papers.ni
 
 Авторы использовали сверточную сеть из 8 слоев: 5 сверточных, 3 полносвязных. Последний слой — [softmax](https://en.wikipedia.org/wiki/Softmax_function) на 1000 классов.
 
-{{<image src="/img/imagenet/alexNet.png" alt="AlexNet network" position="center">}}
+![AlexNet network](/img/imagenet/alexNet.png)
 Оригинальная схема из статьи. (Да, она неправильно обрезана в статье.)
 
 А еще в схеме есть забавная [неточность](https://youtu.be/LxfUGhug-iQ?t=48m58s).
@@ -119,13 +119,13 @@ Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2
 
 *Inception* слой одновременно применяет к предыдущему слою 1x1, 3x3 и 5x5 свертки, 3x3 пулинг и комбинирует результаты. Это проще один раз [увидеть](https://www.youtube.com/watch?v=VxhSouuSZDY). Для уменьшения вычислительной сложности дополнительно используются 1x1 свертки.
 
-{{<image src="/img/imagenet/inceptionLayer.png" alt="Inception layer" position="center">}}
+![Inception layer](/img/imagenet/inceptionLayer.png)
 Схема *Inception* слоя.
 
 ### GoogleLeNet
 *GoogleLeNet* является конкретной реализацией *Inception* архитектуры, использованной в соревновании *ILSVRC* 2014. Сеть содержит 22 слоя (27 если считать пулинг слои). На самом деле простых независимых слоев около 100.
 
-{{<image src="/assets/imagenet/googleLeNet.png" alt="GoogleLeNet" position="center">}}
+![GoogleLeNet](/img/imagenet/googleLeNet.png)
 Схема *GoogleLeNet*.
 
 Функция активации: *ReLU*. Обучали стохастическим градиентным спуском с импульсом. Для улучшения *backpropogation* дополнительно использовали вспомогательные классификаторы на основе простых сверточных сетей.

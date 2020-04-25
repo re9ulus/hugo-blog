@@ -1,9 +1,9 @@
-baseURL = "re9ulus.github.io"
-title = "Re9ulus Blog"
+baseURL = "example.com"
+title = "Manis"
 theme = "manis"
 
 # Copyright notice. Note: You can use HTML tag here
-copyright = "&copy; 2020 Re9ulus"
+copyright = "&copy; 2019 Yurizal Susanto"
 pluralizeListTitles = false
 
 # Minimum number of posts before paginate navigation show up
@@ -13,16 +13,15 @@ paginate = 10
 disqusShortname = ""
 
 # Edit this if you want to translate your blog
-defaultContentLanguage = "ru"
+defaultContentLanguage = "en"
 
 # Code Highlighting (Chroma)
 pygmentsCodeFences = true
-# pygmentsUseClasses = true
-pygmentsStyle = "monokailight"
+pygmentsUseClasses = true
 
 [menu]
 	[[menu.main]]
-		name = "Posts"
+		name = "Post"
 		url = "/post/"
 	
 	[[menu.main]]
@@ -39,9 +38,9 @@ pygmentsStyle = "monokailight"
 	customCSS = []
 	
 	# Site meta description
-	description = "Random things from Compute Science"
+	description = "Sweet little Hugo's theme for personal website or blog."
 	# Site's Tagline (Subtitle or Keyword)
-	tagline = "Случайные заметки из мира Compute Science"
+	tagline = "Nothing sweeter than this"
 	# If true give attribution to this theme
 	themeAttrib = true
 	# URL to license file, can be outside of your domain
@@ -69,7 +68,7 @@ pygmentsStyle = "monokailight"
 	# Color of your website's accent
 	colorTheme = "#ff6565"
 	# Maximum number of item in Latest Posts or Works
-	latestCount = 10
+	latestCount = 3
 	# Path to site's favicon image
 	faviconImg = ""
 	# Date format in item list
@@ -81,9 +80,9 @@ pygmentsStyle = "monokailight"
 	highlightJsStyle = "ocean"
 
 	# Social Links
-	email = "re9ulusv@gmail.com"
-	github = "https://github.com/re9ulus/"
-	twitter = "https://twitter.com/re9ulusV"
+	email = "mail@yurizal-san.com"
+	github = "https://github.com/yursan9/"
+	twitter = "https://twitter.com/yuri_boya"
 
 
 # Language Configuration

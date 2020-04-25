@@ -1,11 +1,10 @@
 ---
 author: re9ulus
 date: "2015-11-09T22:00:00Z"
-header-img: img/post-bg-04.jpg
-title: Заметки об MongoDB
+title: Заметки по MongoDB
 ---
 
-Мои заметки об *MongoDB* по  мотивам [курса](https://university.mongodb.com/courses/M101P/about).
+Мои заметки по *MongoDB* по  мотивам [курса](https://university.mongodb.com/courses/M101P/about).
 <!--more-->
 
 *MongoDB* — кросс-платформенная, документо-ориентированная NoSQL система управления базами данных с открытым исходным кодом.
@@ -22,8 +21,7 @@ title: Заметки об MongoDB
 |      Delete     |     Remove  |      Delete     |
 
 ## Команды консоли MongoDB
-{{< highlight javascript >}}
-
+```javascript
 //=//=// Основы
 
 // Показать базы данных
@@ -215,5 +213,4 @@ db.people.remove( { } );
 
 // Удаление всей коллекции.
 db.people.drop();
-
-{{< / highlight >}}
+```

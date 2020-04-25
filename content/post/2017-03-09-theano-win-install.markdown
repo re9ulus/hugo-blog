@@ -17,19 +17,19 @@ title: Ставим Theano на Windows
 
 2\. В консоли ставим нужные пакеты.
 
-```
+```python
 conda install mingw libpython
 ```
 
 3\. Клонируем репозиторий *Theano*. (Естественно понадобится [Git](https://git-scm.com))
 
-```
+```python
 git clone https://github.com/Theano/Theano.git
 ```
 
 4\. Устанавливаем Python пакет.
 
-```
+```python
 cd Theano
 python setup.py install
 ```
@@ -61,7 +61,7 @@ VS 2015 использовать не стоит, она не поддержив
 
 3\. Добавляем в домашнюю директорию пользователя (например `C:\Users\re9ulus`) файл `.theanorc.txt` с содержимым:
 
-```
+```python
 #!sh
 [global]
 device = gpu

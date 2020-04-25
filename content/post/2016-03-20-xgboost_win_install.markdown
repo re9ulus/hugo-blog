@@ -31,7 +31,7 @@ title: Установка XGBoost на Windows
 
 Путь установки не должен содержать кириллицы и желательно избежать пробелов. При установке выбираем:
 
-```
+```python
 Architecture: x86_64
 Threads: win32
 ```
@@ -47,7 +47,7 @@ Threads: win32
 
 6\. Переходим непосредственно к процессу установки. Вместо обычного терминала открываем `Cygwin64` и выполняем:
 
-```
+```python
 cd c:\
 >
 git clone --recursive https://github.com/dmlc/xgboost
@@ -60,7 +60,7 @@ cp make/mingw64.mk ./config.mk
 Если необходимо внести какие-то изменения в конфигурацию, это можно сделать в файле `config.mk`.
 Остается одна команда:
 
-```
+```python
 make -j4
 ```
 
@@ -73,7 +73,7 @@ make -j4
 
 7\. Осталось сделать из всего этого `python` пакет.
 
-```
+```python
 cd python-package
 python setup.py install
 ```
@@ -82,7 +82,7 @@ python setup.py install
 
 8\. Тестируем
 
-```
+```python
 python
 >>> import xgboost
 >>> xgboost.__version__
