@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.70.0-DEV" />
+		<title>Установка XGBoost на Windows - Re9ulus Blog</title>
+
+		<meta name="description" content="">
+
+
+		
+	
+		
+
+
+
+
+<link rel="stylesheet" href="/re9ulus.github.io/css/ui.css">
+
+	
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="re9ulus.github.io/about">About</a></li><li><a href="re9ulus.github.io/post/">Posts</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>Установка XGBoost на Windows</h1>
+	<h5>
+		
+		<time datetime="2016-03-20 00:00:00 &#43;0000 UTC">Mar 20, 2016</time>
+		<span class="no-print">
+			<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	<p><em><code>XGBoost</code></em> - это <em>очень</em> эффективная библиотека, которая реализует алгоритмы адаптивного бустинга. Если вам понадобилось ее установить, то я предполагаю что вы знаете что это и зачем нужно.</p>
+<hr>
+<p><strong>Update:</strong> <em>02.03.2017</em></p>
+<p>Вместо самостоятельной сборки можно воспользоваться неофициальными бинарниками.</p>
+<ul>
+<li>плюс: они собраны за вас и вам не придется самостоятельно проходить процесс сборки.</li>
+<li>минус: бинарники неофициальные, со всеми вытекающими последствиями.</li>
+</ul>
+<h2 id="скачать-можно-здесьhttpwwwpicnetcomaublogsguidopost20160922xgboost-windows-x64-binaries-for-download-и-сразу-переходить-к-пункту-7">Скачать можно <a href="http://www.picnet.com.au/blogs/guido/post/2016/09/22/xgboost-windows-x64-binaries-for-download/">здесь</a> и сразу переходить к пункту 7.</h2>
+<p>Но, перед началом использования, пользователей Windows ожидает нетривиальный квест с установкой данной библиотеки. Об этом и пойдет речь в данной заметке.</p>
+<p>Нижеописанное представляет собой микс из <a href="https://xgboost.readthedocs.org/en/latest/build.html#building-on-windows/" title="XGBoost official documentation installation.">официальной документации</a> и различных ответов на Stack Oveflow и Kaggle, с помощью которого мне удалось установить <code>x64</code> пакет <code>Python</code> на <code>Windows 8.1</code>.</p>
+<p>Если у вас есть возможность использовать XGBoost под <code>*nix</code> системой - так и сделайте. Весь процесс установки для *unix: <code>pip install xgboost</code>.</p>
+<h2 id="пошаговая-инструкция-для-windows">Пошаговая инструкция для Windows</h2>
+<p>1. Устанавливаем <a href="https://sourceforge.net/projects/mingw-w64/" title="mingw64 installation link.">mingw64</a>.</p>
+<p>Путь установки не должен содержать кириллицы и желательно избежать пробелов. При установке выбираем:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">Architecture</span><span style="color:#111">:</span> <span style="color:#111">x86_64</span>
+<span style="color:#111">Threads</span><span style="color:#111">:</span> <span style="color:#111">win32</span>
+</code></pre></div><p>2. Добавляем папку <code>...\mingw64\bin</code> в переменные среды.</p>
+<p>3. Находим в папке <code>...\mingw64\bin</code> файл <code>mingw32-make.exe</code>, копируем и переименовываем в <code>make.exe</code>.</p>
+<p>4. Устанавливаем
+<a href="https://cygwin.com/install.html" title="Cygwin-x86_64 installation link.">Cygwin-x86_64</a>.</p>
+<p>5. Если по какой-то причине не установлен <a href="https://git-for-windows.github.io" title="git for windows installation link.">Git</a>, устанавливаем и добавляем в переменные среды.</p>
+<p>6. Переходим непосредственно к процессу установки. Вместо обычного терминала открываем <code>Cygwin64</code> и выполняем:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">cd</span> <span style="color:#111">c</span><span style="color:#111">:</span>\
+<span style="color:#f92672">&gt;</span>
+<span style="color:#111">git</span> <span style="color:#111">clone</span> <span style="color:#f92672">--</span><span style="color:#111">recursive</span> <span style="color:#111">https</span><span style="color:#111">:</span><span style="color:#f92672">//</span><span style="color:#111">github</span><span style="color:#f92672">.</span><span style="color:#111">com</span><span style="color:#f92672">/</span><span style="color:#111">dmlc</span><span style="color:#f92672">/</span><span style="color:#111">xgboost</span>
+<span style="color:#111">cd</span> <span style="color:#111">xgboost</span>
+<span style="color:#111">git</span> <span style="color:#111">submodule</span> <span style="color:#111">init</span>
+<span style="color:#111">git</span> <span style="color:#111">submodule</span> <span style="color:#111">update</span>
+<span style="color:#111">cp</span> <span style="color:#111">make</span><span style="color:#f92672">/</span><span style="color:#111">mingw64</span><span style="color:#f92672">.</span><span style="color:#111">mk</span> <span style="color:#f92672">./</span><span style="color:#111">config</span><span style="color:#f92672">.</span><span style="color:#111">mk</span>
+</code></pre></div><p>Если необходимо внести какие-то изменения в конфигурацию, это можно сделать в файле <code>config.mk</code>.
+Остается одна команда:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">make</span> <span style="color:#f92672">-</span><span style="color:#111">j4</span>
+</code></pre></div><p>Возможно, у вас она выполнится нормально и в папке <code>C:\xgboost</code> появится файл <code>xgboost.exe</code>. Значит билд выполнен успешно.</p>
+<p>У меня билд падал с ошибкой <code>g++: error: unrecognized option '-pthread'</code>.</p>
+<p>Лечится эта ошибка изменением аргумента <code>-pthread</code> на <code>-lpthread</code> в <code>42</code> строке файла <code>C:\xgboost\Makefile</code>.
+После этого наконец должен появиться файл <code>xgboost.exe</code>, это значит что мы все сделали правильно.</p>
+<p>7. Осталось сделать из всего этого <code>python</code> пакет.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">cd</span> <span style="color:#111">python</span><span style="color:#f92672">-</span><span style="color:#111">package</span>
+<span style="color:#111">python</span> <span style="color:#111">setup</span><span style="color:#f92672">.</span><span style="color:#111">py</span> <span style="color:#111">install</span>
+</code></pre></div><p>Для выполнения этой команды могут понадобиться <code>distutils</code>, которые входят в <a href="https://pypi.python.org/pypi/setuptools" title="setuptools for windows installation link.">setuptools</a>.</p>
+<p>8. Тестируем</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">python</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> <span style="color:#111">xgboost</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">xgboost</span><span style="color:#f92672">.</span><span style="color:#111">__version__</span>
+<span style="color:#d88200">&#39;0.4&#39;</span>
+</code></pre></div><p><em><code>XGBoost</code></em> установлен. Радуемся и начинаем обучать адаптивные леса.</p>
+<p>Дополнительно проверить надежность установки можно на официальных <a href="https://github.com/dmlc/xgboost/tree/master/demo/guide-python" title="official XGBoost examples.">примерах</a>.</p>
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="re9ulus.github.io/post/2016-01-09-ipython-notebook/">
+		<img class="icon-text" src="/img/prev.svg"/>IPython Notebook</a>
+
+
+	<a class="next-post" href="re9ulus.github.io/post/2016-09-29-ml_is_fun_translate/">Машинное обучение это весело!<img class="icon-text" src="/img/next.svg"/>
+	</a>
+
+</nav>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMath();"></script>
+
+
+
+<script>
+function renderMath() {
+  renderMathInElement(
+      document.body,
+      {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\[", right: "\\]", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false}
+          ]
+      }
+  );
+}
+</script>
+
+
+
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(29515615, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/29515615" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+

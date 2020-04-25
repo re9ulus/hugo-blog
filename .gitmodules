@@ -1,4 +1,0 @@
-[submodule "public"]
-	path = public
-	url = git@github.com:re9ulus/re9ulus.github.io.git
-	branch = master

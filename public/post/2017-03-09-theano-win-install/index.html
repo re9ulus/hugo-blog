@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.70.0-DEV" />
+		<title>Ставим Theano на Windows - Re9ulus Blog</title>
+
+		<meta name="description" content="Theano — популярная библиотека для работы с нейронными сетями. И как многие полезные Machine Learning инструменты, на Windows она просто так не ставится.">
+
+
+		
+	
+		
+
+
+
+
+<link rel="stylesheet" href="/re9ulus.github.io/css/ui.css">
+
+	
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="re9ulus.github.io/about">About</a></li><li><a href="re9ulus.github.io/post/">Posts</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>Ставим Theano на Windows</h1>
+	<h5>
+		
+		<time datetime="2017-03-09 00:00:00 &#43;0000 UTC">Mar 09, 2017</time>
+		<span class="no-print">
+			<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	<p><em>Theano</em> — популярная <a href="http://deeplearning.net/software/theano/">библиотека</a> для работы с нейронными сетями. И как многие полезные Machine Learning инструменты, на Windows она просто так не ставится.</p>
+<p>В заметке описан самый простой из известных мне на данный момент способов установки <em>Theano</em> на Windows, благодаря которому у меня получилось поставить на <code>Python 3.5 x64</code> пакет <code>Theano 0.9.0.rc3</code> с работающей поддержкой GPU, система <code>win8.1 x64</code>.</p>
+<p>Еще можно воспользоваться <a href="http://deeplearning.net/software/theano/install.html">официальной документацией</a> или <a href="https://github.com/Theano/Theano/issues/5348">альтернативной инструкцией</a>.</p>
+<h2 id="установка-theano">Установка Theano</h2>
+<p>1. Нам понадобится <a href="https://conda.io/docs/intro.html">Conda</a>, которая идет в пакете <a href="https://www.continuum.io/downloads">Anaconda</a> для ML в Python. Я использую <code>Anaconda  3</code> и <code>Python 3.5</code>.</p>
+<p>2. В консоли ставим нужные пакеты.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">conda</span> <span style="color:#111">install</span> <span style="color:#111">mingw</span> <span style="color:#111">libpython</span>
+</code></pre></div><p>3. Клонируем репозиторий <em>Theano</em>. (Естественно понадобится <a href="https://git-scm.com">Git</a>)</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">git</span> <span style="color:#111">clone</span> <span style="color:#111">https</span><span style="color:#111">:</span><span style="color:#f92672">//</span><span style="color:#111">github</span><span style="color:#f92672">.</span><span style="color:#111">com</span><span style="color:#f92672">/</span><span style="color:#111">Theano</span><span style="color:#f92672">/</span><span style="color:#111">Theano</span><span style="color:#f92672">.</span><span style="color:#111">git</span>
+</code></pre></div><p>4. Устанавливаем Python пакет.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">cd</span> <span style="color:#111">Theano</span>
+<span style="color:#111">python</span> <span style="color:#111">setup</span><span style="color:#f92672">.</span><span style="color:#111">py</span> <span style="color:#111">install</span>
+</code></pre></div><p>Готово.</p>
+<p><em>Theano</em> должен быть установлен. Для проверки корректности можно попробовать выполнить простой скрипт в интерпретаторе.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> <span style="color:#111">theano.tensor</span> <span style="color:#f92672">as</span> <span style="color:#111">T</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> <span style="color:#111">theano</span> <span style="color:#f92672">import</span> <span style="color:#111">function</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">T</span><span style="color:#f92672">.</span><span style="color:#111">dscalar</span><span style="color:#111">(</span><span style="color:#d88200">&#39;x&#39;</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">T</span><span style="color:#f92672">.</span><span style="color:#111">dscalar</span><span style="color:#111">(</span><span style="color:#d88200">&#39;y&#39;</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">z</span> <span style="color:#f92672">=</span> <span style="color:#111">x</span> <span style="color:#f92672">+</span> <span style="color:#111">y</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">function</span><span style="color:#111">([</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#111">],</span> <span style="color:#111">z</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">f</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+<span style="color:#75715e"># array(5.0)</span>
+</code></pre></div><p>Если выполнилось — <em>Theano</em> нормально установлен. Но работает он только на процессоре (CPU), значит сети будут считаться очень медленно. Настроим работу с видеокартой (GPU).</p>
+<h2 id="настраиваем-работу-theano-с-gpu">Настраиваем работу Theano с GPU</h2>
+<p>1. Нам понадобится Visual Studio. Я использовал <code>Enterprise edition 2013</code>.
+Можно попробовать использовать Community version студии и <a href="https://www.microsoft.com/en-us/download/details.aspx?id=8279">MS SDK for Win7</a>.
+VS 2015 использовать не стоит, она не поддерживает CUDA 7.5.</p>
+<p>2. Устанавливаем <a href="https://developer.nvidia.com/cuda-75-downloads-archive">CUDA 7.5 Toolkit</a>. Придется зарегистрироваться на сайте NVidia.</p>
+<p>3. Добавляем в домашнюю директорию пользователя (например <code>C:\Users\re9ulus</code>) файл <code>.theanorc.txt</code> с содержимым:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!sh</span>
+<span style="color:#111">[</span><span style="color:#00a8c8">global</span><span style="color:#111">]</span>
+<span style="color:#111">device</span> <span style="color:#f92672">=</span> <span style="color:#111">gpu</span>
+<span style="color:#111">floatX</span> <span style="color:#f92672">=</span> <span style="color:#111">float32</span>
+<span style="color:#111">[</span><span style="color:#111">nvcc</span><span style="color:#111">]</span>
+<span style="color:#111">compiler_bindir</span><span style="color:#f92672">=</span><span style="color:#111">D</span><span style="color:#111">:</span>\<span style="color:#111">soft</span>\<span style="color:#111">dev</span>\<span style="color:#111">vs2013</span>\<span style="color:#111">VC</span>\<span style="color:#111">bin</span>
+</code></pre></div><p>где <code>compiler_bindir</code> — путь к папке <code>bin</code> в установленной <em>Visual Studio</em>.</p>
+<p>Готово. Теперь <em>Theano</em> должна использовать GPU. Проверить можно с помощью примера из <a href="http://deeplearning.net/software/theano/tutorial/using_gpu.html">официальной документации</a>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> <span style="color:#111">theano</span> <span style="color:#f92672">import</span> <span style="color:#111">function</span><span style="color:#111">,</span> <span style="color:#111">config</span><span style="color:#111">,</span> <span style="color:#111">shared</span><span style="color:#111">,</span> <span style="color:#111">sandbox</span>
+<span style="color:#f92672">import</span> <span style="color:#111">theano.sandbox.cuda.basic_ops</span>
+<span style="color:#f92672">import</span> <span style="color:#111">theano.tensor</span> <span style="color:#f92672">as</span> <span style="color:#111">T</span>
+<span style="color:#f92672">import</span> <span style="color:#111">numpy</span>
+<span style="color:#f92672">import</span> <span style="color:#111">time</span>
+
+<span style="color:#111">vlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">768</span>  <span style="color:#75715e"># 10 x #cores x # threads per core</span>
+<span style="color:#111">iters</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+
+<span style="color:#111">rng</span> <span style="color:#f92672">=</span> <span style="color:#111">numpy</span><span style="color:#f92672">.</span><span style="color:#111">random</span><span style="color:#f92672">.</span><span style="color:#111">RandomState</span><span style="color:#111">(</span><span style="color:#ae81ff">22</span><span style="color:#111">)</span>
+<span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">shared</span><span style="color:#111">(</span><span style="color:#111">numpy</span><span style="color:#f92672">.</span><span style="color:#111">asarray</span><span style="color:#111">(</span><span style="color:#111">rng</span><span style="color:#f92672">.</span><span style="color:#111">rand</span><span style="color:#111">(</span><span style="color:#111">vlen</span><span style="color:#111">),</span> <span style="color:#d88200">&#39;float32&#39;</span><span style="color:#111">))</span>
+<span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">function</span><span style="color:#111">([],</span> <span style="color:#111">sandbox</span><span style="color:#f92672">.</span><span style="color:#111">cuda</span><span style="color:#f92672">.</span><span style="color:#111">basic_ops</span><span style="color:#f92672">.</span><span style="color:#111">gpu_from_host</span><span style="color:#111">(</span><span style="color:#111">T</span><span style="color:#f92672">.</span><span style="color:#111">exp</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">maker</span><span style="color:#f92672">.</span><span style="color:#111">fgraph</span><span style="color:#f92672">.</span><span style="color:#111">toposort</span><span style="color:#111">())</span>
+<span style="color:#111">t0</span> <span style="color:#f92672">=</span> <span style="color:#111">time</span><span style="color:#f92672">.</span><span style="color:#111">time</span><span style="color:#111">()</span>
+<span style="color:#00a8c8">for</span> <span style="color:#111">i</span> <span style="color:#f92672">in</span> <span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#111">iters</span><span style="color:#111">):</span>
+    <span style="color:#111">r</span> <span style="color:#f92672">=</span> <span style="color:#111">f</span><span style="color:#111">()</span>
+<span style="color:#111">t1</span> <span style="color:#f92672">=</span> <span style="color:#111">time</span><span style="color:#f92672">.</span><span style="color:#111">time</span><span style="color:#111">()</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Looping </span><span style="color:#d88200">%d</span><span style="color:#d88200"> times took </span><span style="color:#d88200">%f</span><span style="color:#d88200"> seconds&#34;</span> <span style="color:#f92672">%</span> <span style="color:#111">(</span><span style="color:#111">iters</span><span style="color:#111">,</span> <span style="color:#111">t1</span> <span style="color:#f92672">-</span> <span style="color:#111">t0</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Result is </span><span style="color:#d88200">%s</span><span style="color:#d88200">&#34;</span> <span style="color:#f92672">%</span> <span style="color:#111">(</span><span style="color:#111">r</span><span style="color:#111">,))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Numpy result is </span><span style="color:#d88200">%s</span><span style="color:#d88200">&#34;</span> <span style="color:#f92672">%</span> <span style="color:#111">(</span><span style="color:#111">numpy</span><span style="color:#f92672">.</span><span style="color:#111">asarray</span><span style="color:#111">(</span><span style="color:#111">r</span><span style="color:#111">),))</span>
+<span style="color:#00a8c8">if</span> <span style="color:#111">numpy</span><span style="color:#f92672">.</span><span style="color:#111">any</span><span style="color:#111">([</span><span style="color:#111">isinstance</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#f92672">.</span><span style="color:#111">op</span><span style="color:#111">,</span> <span style="color:#111">T</span><span style="color:#f92672">.</span><span style="color:#111">Elemwise</span><span style="color:#111">)</span> <span style="color:#00a8c8">for</span> <span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">maker</span><span style="color:#f92672">.</span><span style="color:#111">fgraph</span><span style="color:#f92672">.</span><span style="color:#111">toposort</span><span style="color:#111">()]):</span>
+    <span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Used the cpu&#39;</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">else</span><span style="color:#111">:</span>
+    <span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Used the gpu&#39;</span><span style="color:#111">)</span>
+</code></pre></div>
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="re9ulus.github.io/post/2017-03-04-imagenet-paper-digest/">
+		<img class="icon-text" src="/img/prev.svg"/>Заметки о статьях по DeepLearning и ImageNet</a>
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMath();"></script>
+
+
+
+<script>
+function renderMath() {
+  renderMathInElement(
+      document.body,
+      {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\[", right: "\\]", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false}
+          ]
+      }
+  );
+}
+</script>
+
+
+
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(29515615, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/29515615" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Re9ulus Blog</title>
+    <link>re9ulus.github.io/</link>
+    <description>Recent content on Re9ulus Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2020 Re9ulus</copyright>
+    <lastBuildDate>Mon, 25 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="re9ulus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ставим Theano на Windows</title>
+      <link>re9ulus.github.io/post/2017-03-09-theano-win-install/</link>
+      <pubDate>Thu, 09 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2017-03-09-theano-win-install/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Theano&lt;/em&gt; — популярная &lt;a href=&#34;http://deeplearning.net/software/theano/&#34;&gt;библиотека&lt;/a&gt; для работы с нейронными сетями. И как многие полезные Machine Learning инструменты, на Windows она просто так не ставится.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Заметки о статьях по DeepLearning и ImageNet</title>
+      <link>re9ulus.github.io/post/2017-03-04-imagenet-paper-digest/</link>
+      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2017-03-04-imagenet-paper-digest/</guid>
+      <description>&lt;p&gt;Краткая заметка о содержании классических статей по сверточным нейронным сетям и &lt;em&gt;ImageNet&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Подборка материалов по нейронным сетям</title>
+      <link>re9ulus.github.io/post/2016-12-16-neural-network-resources/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2016-12-16-neural-network-resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Машинное обучение это весело!</title>
+      <link>re9ulus.github.io/post/2016-09-29-ml_is_fun_translate/</link>
+      <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2016-09-29-ml_is_fun_translate/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Перевод статьи: &lt;a href=&#34;https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471#.wt681sugn&#34; title=&#34;Machine Learning is Fun!&#34;&gt;Machine Learning is Fun!&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Установка XGBoost на Windows</title>
+      <link>re9ulus.github.io/post/2016-03-20-xgboost_win_install/</link>
+      <pubDate>Sun, 20 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2016-03-20-xgboost_win_install/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Привет!</title>
+      <link>re9ulus.github.io/about/</link>
+      <pubDate>Mon, 25 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/about/</guid>
+      <description>Меня зовут Вася, я Python/C++ разработчик. Люблю программирование, историю и машинное обучение. Участвовал в студенческих ACM ICPC олимпиадах. Менторил специализацию МФТИ и Яндекса Машинное обучение и анализ данных на Coursera.
+ Hi, my name is Vasiliy. I am Python/C++ developer. My interests are programming, history and machine learning. I have participated in ACM ICPC programming contests. I was a mentor at Coursera specialization [Machine learning and data science.
+ Contacts:</description>
+    </item>
+    
+    <item>
+      <title>IPython Notebook</title>
+      <link>re9ulus.github.io/post/2016-01-09-ipython-notebook/</link>
+      <pubDate>Sat, 09 Jan 2016 16:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2016-01-09-ipython-notebook/</guid>
+      <description>&lt;p&gt;Как установить и что с ним потом делать&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Деревья принятия решений в R</title>
+      <link>re9ulus.github.io/post/2015-12-07-trees_in_r/</link>
+      <pubDate>Mon, 07 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2015-12-07-trees_in_r/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Дерево принятия решений&lt;/em&gt; - средство поддержки принятия решений, использующееся в статистике и анализе данных для прогнозных моделей.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Заметки по MongoDB</title>
+      <link>re9ulus.github.io/post/2015-11-09-mongodb_cheat_sheet/</link>
+      <pubDate>Mon, 09 Nov 2015 22:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2015-11-09-mongodb_cheat_sheet/</guid>
+      <description>&lt;p&gt;Мои заметки по &lt;em&gt;MongoDB&lt;/em&gt; по  мотивам &lt;a href=&#34;https://university.mongodb.com/courses/M101P/about&#34;&gt;курса&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Логистическая регрессия в R</title>
+      <link>re9ulus.github.io/post/2015-10-28-logistic_regression_in_r/</link>
+      <pubDate>Wed, 28 Oct 2015 22:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2015-10-28-logistic_regression_in_r/</guid>
+      <description>&lt;p&gt;Логистическая регрессия - статистическая модель, которая применяется для предсказания вероятности возникновения некоторого события по значениям множества признаков.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Основы R, типы данных</title>
+      <link>re9ulus.github.io/post/2015-09-02-introduction_to_r_p1/</link>
+      <pubDate>Wed, 02 Sep 2015 12:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2015-09-02-introduction_to_r_p1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Взлом простых шифров</title>
+      <link>re9ulus.github.io/post/2015-04-05-hacking-easy-ciphers/</link>
+      <pubDate>Sun, 05 Apr 2015 12:00:00 +0000</pubDate>
+      
+      <guid>re9ulus.github.io/post/2015-04-05-hacking-easy-ciphers/</guid>
+      <description>&lt;p&gt;Экскурс в криптографию&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
