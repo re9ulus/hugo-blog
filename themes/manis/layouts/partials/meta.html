@@ -1,7 +1,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		{{ .Hugo.Generator }}
+		{{ hugo.Generator }}
 		{{ partial "metatitle" . }}
 		{{ partial "metadesc" . }}
 
@@ -15,6 +15,8 @@
 		<link rel="stylesheet" href="{{ . }}"/>
 		{{ end }}
 
+		<script defer src="/js/dark-mode.js"></script>
+		<link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
 		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
 
 		{{ if .Site.Params.HighlightJs }}
